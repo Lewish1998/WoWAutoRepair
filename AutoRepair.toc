@@ -1,0 +1,11 @@
+## Interface: 40400
+## Title: Auto Repair
+## Notes: A simple addon to auto repair your items
+## Author: Lewis Halstead
+## Version: 1.0.0
+## RequiredDeps:
+## X-Curse-Project-ID: 999999
+## SavedVariables:
+## SavedVariablesPerCharacter: 
+
+AutoRepair.lua
