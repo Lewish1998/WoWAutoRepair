@@ -1,6 +1,6 @@
 ## Interface: 40400
 ## Title: Auto Repair
-## Notes: A simple addon to auto repair your items
+## Notes: A simple addon to auto repair your items. Commands: /autorepair enable | disable
 ## Author: Lewis Halstead
 ## Version: 1.0.0
 ## RequiredDeps:
