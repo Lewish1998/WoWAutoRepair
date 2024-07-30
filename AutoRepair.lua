@@ -15,8 +15,10 @@ local function OnEvent(self, event, ...)
             RepairAllItems()
             AutoRepairDB.totalRepairSpend = AutoRepairDB.totalRepairSpend + repairCost
             print("All items repaired for " .. C_CurrencyInfo.GetCoinTextureString(repairCost))
-            -- TODO: Below is printing 462 for 4G 62S
-            print("Total repair cost to date: " .. AutoRepairDB.totalRepairSpend)
+            local gold = math.floor(AutoRepairDB.totalRepairSpend / 10000)
+            local silver = math.floor((AutoRepairDB.totalRepairSpend % 10000) / 100)
+            local copper = AutoRepairDB.totalRepairSpend % 100
+            print(string.format("Repair cost to date: %dG %dS %dC", gold, silver, copper))
         elseif repairCost > 0 then
             print("Not enough money to repair items")
         end
