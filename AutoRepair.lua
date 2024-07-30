@@ -1,5 +1,8 @@
 if not AutoRepairDB then 
-    AutoRepairDB = {totalRepairSpend = 0}
+    AutoRepairDB = {
+        totalRepairSpend = 0,
+        enabled = true
+    }
 end
 
 local frame = CreateFrame("Frame")
@@ -9,7 +12,7 @@ frame:RegisterEvent("MERCHANT_SHOW")
 print("AutoRepair addon loaded")
 
 local function OnEvent(self, event, ...)
-    if event == "MERCHANT_SHOW" and CanMerchantRepair() then
+    if event == "MERCHANT_SHOW" and CanMerchantRepair() and AutoRepairDB.enabled then
         local repairCost = GetRepairAllCost()
         if repairCost > 0 and GetMoney() >= repairCost then
             RepairAllItems()
@@ -26,3 +29,18 @@ local function OnEvent(self, event, ...)
 end
 
 frame:SetScript("OnEvent", OnEvent)
+
+local function HandleSlashCommand(input)
+    if input == "enable" then
+        AutoRepairDB.enabled = true
+        print("AutoRepair addon enabled")
+    elseif input == "disable" then
+        AutoRepairDB.enabled = false
+        print("AutoRepair addon disabled")
+    else
+        print("Invalid command. Use: /autorepair enable | disable")
+    end
+end
+
+SLASH_AUTOREPAIR1 = "/autorepair"
+SlashCmdList["AUTOREPAIR"] = HandleSlashCommand
