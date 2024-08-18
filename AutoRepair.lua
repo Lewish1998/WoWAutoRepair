@@ -1,4 +1,4 @@
-if not AutoRepairDB or AutoRepairDB.version ~= '1.1.0' then 
+if not AutoRepairDB or AutoRepairDB.version == '1.1.0' then 
     local backupPersonalSpend = AutoRepairDB and AutoRepairDB.totalRepairSpendPersonal or 0
     local backupGuildSpend = AutoRepairDB and AutoRepairDB.totalRepairSpendGuild or 0
 
@@ -16,7 +16,7 @@ end
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("MERCHANT_SHOW")
 
-print("AutoRepair v1.1.0 loaded")
+print("AutoRepair v1.2.0 loaded")
 print("If you find AutoRepair useful, or want to see additional features, please leave a comment on Curse Forge!")
 
 local function guildRepairFunc(repairCost)
@@ -140,6 +140,10 @@ local function showHelp()
     print("Commands:\nEnable AutoRepair: /autorepair enable\nDisable AutoRepair: /autorepair disable\nEnable cost-to-date: /autorepair ctd enable\nDisable cost-to-date: /autorepair ctd disable\nPrint cost-to-date: /autorepair ctd\nEnable guild repair: /autorepair guild enable\nDisable guild repair: /autorepair guild disable\nEnable personal repair: /autorepair personal enable\nDisable personal repair: /autorepair personal disable")
 end
 
+local function showDetail()
+    print(string.format("Auto Repair Details\nVersion: %s\nAddon enabled: %s\nCost to date enabled: %s\nGuild repair enabled: %s\nPersonal repair enabled: %s", AutoRepairDB.version, tostring(AutoRepairDB.enabled), tostring(AutoRepairDB.costToDate), tostring(AutoRepairDB.guildRepair), tostring(AutoRepairDB.personalRepair)))
+end
+
 local commands = {
     ["enable"] = enableAutoRepair,
     ["disable"] = disableAutoRepair,
@@ -150,7 +154,8 @@ local commands = {
     ["guild disable"] = disableGuildRepair,
     ["personal enable"] = enablePersonalRepair,
     ["personal disable"] = disablePersonalRepair,
-    ["help"] = showHelp
+    ["help"] = showHelp,
+    ["detail"] = showDetail
 }
 
 local function HandleSlashCommand(input)
