@@ -1,6 +1,6 @@
-## Interface: 40400
+## Interface: 40401
 ## Title: AutoRepair
-## Notes: A simple addon to auto repair your items. Type /autorepair help to view commands
+## Notes: A simple addon to auto repair your items. Type /ar to open settings
 ## Author: Lewis Halstead
 ## Version: 1.2.0
 ## RequiredDeps:
