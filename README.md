@@ -30,3 +30,5 @@ If using Mac the World of Warcraft directory is found under the Applications dir
 * Additional commands to view cost to date
 * Help command added to view all commands
 * Code tidy up
+
+test
